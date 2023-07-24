@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#BB86FC"
+    tools:context=".LoginActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="32dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:text="@string/log_in"
+                android:textStyle="bold"
+                android:textSize="50sp"
+                android:background="#FFE0E0E0"/>
+
+            <EditText
+                android:id="@+id/email_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="250dp"
+                android:minHeight="48dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="32dp"
+                android:hint="@string/e_mail"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/password_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="250dp"
+                android:minHeight="48dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:hint="@string/password"
+                android:autofillHints="password"
+                android:inputType="textPassword"/>
+
+            <Button
+                android:id="@+id/submit_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:layout_gravity="center"
+                android:text="@string/log_in"/>
+
+            <TextView
+                android:id="@+id/login_to_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginStart="40dp"
+                app:drawableLeftCompat="@drawable/baseline_arrow_back_24"
+                android:gravity="center"
+                android:text="@string/continue_with_sign_up"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/login_with_otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="40sp"
+                android:layout_marginBottom="40sp"
+                android:gravity="center"
+                android:text="@string/log_in_with_otp"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"
+                app:drawableRightCompat="@drawable/baseline_arrow_forward_24"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

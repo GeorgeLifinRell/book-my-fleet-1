@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Town Bus</string>
+    <string name="bus">Bus</string>
+    <string name="flight">Flight</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="name">Name</string>
+    <string name="submit">SUBMIT</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="continue_with_login">Continue with login</string>
+    <string name="log_in">LOG IN</string>
+    <string name="continue_with_sign_up">Continue with Sign Up</string>
+    <string name="log_in_with_otp">Log In with OTP</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="enter_journey_details">Enter Journey Details</string>
+    <string name="none">NONE</string>
+    <string name="from">From</string>
+    <string name="get_location">Get Location</string>
+    <string name="to">To</string>
+    <string name="search_tickets">SEARCH TICKETS</string>
+    <string name="book_now">BOOK NOW</string>
+
+    <string-array name="destinations">
+        <item>BENGALURU</item>
+        <item>COIMBATORE</item>
+        <item>MADURAI</item>
+        <item>TIRUCHIRAPPALLI</item>
+    </string-array>
+</resources>

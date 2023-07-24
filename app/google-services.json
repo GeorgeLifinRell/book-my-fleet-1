@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "738616173862",
+    "project_id": "travel-1336b",
+    "storage_bucket": "travel-1336b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738616173862:android:91ba0cd8f27202fd8dcde7",
+        "android_client_info": {
+          "package_name": "com.example.townbus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738616173862-3dtadmogf0tilufc6qidou88hmrt8h8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArs2v0m5JplqF-U5Em-dr8O9PPmEvxWyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738616173862-3dtadmogf0tilufc6qidou88hmrt8h8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

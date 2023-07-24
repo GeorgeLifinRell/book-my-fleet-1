@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#BB86FC"
+    tools:context=".SignUpActivity">
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="32dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:background="#FFE0E0E0"
+                android:gravity="center"
+                android:text="@string/sign_up"
+                android:textStyle="bold"
+                android:textSize="50sp"/>
+
+            <EditText
+                android:id="@+id/name_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="250dp"
+                android:minHeight="48dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="32dp"
+                android:hint="@string/name"
+                android:autofillHints="name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/email_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="250dp"
+                android:minHeight="48dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:hint="@string/e_mail"
+                android:autofillHints="name"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/password_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="250dp"
+                android:minHeight="48dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:hint="@string/password"
+                android:autofillHints="name"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/phone_number_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="250dp"
+                android:minHeight="48dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:hint="@string/phone_number"
+                android:autofillHints="name"
+                android:inputType="phone" />
+
+            <Button
+                android:id="@+id/submit_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/submit"/>
+
+            <TextView
+                android:id="@+id/signup_to_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_gravity="end"
+                android:text="@string/continue_with_login"
+                android:textSize="18sp"
+                app:drawableRightCompat="@drawable/baseline_login_24"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
