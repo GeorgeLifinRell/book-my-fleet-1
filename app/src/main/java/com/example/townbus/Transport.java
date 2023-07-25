@@ -7,10 +7,15 @@ public class Transport {
     private String transportFrom;
     private String transportTo;
     private String transportRouteNumber;
-    private Date transportDepartureDate;
+    private String transportDepartureDate;
     private Date transportArrivalDate;
 
     public Transport() {
+    }
+
+    public Transport(String transportOperator, String transportRouteNumber) {
+        this.transportOperator = transportOperator;
+        this.transportRouteNumber = transportRouteNumber;
     }
 
     public Transport(String transportOperator, String transportFrom, String transportTo, String transportRouteNumber) {
@@ -20,7 +25,7 @@ public class Transport {
         this.transportRouteNumber = transportRouteNumber;
     }
 
-    public Transport(String transportOperator, String transportFrom, String transportTo, String transportRouteNumber, Date transportDepartureDate, Date transportArrivalDate) {
+    public Transport(String transportOperator, String transportFrom, String transportTo, String transportRouteNumber, String transportDepartureDate, Date transportArrivalDate) {
         this.transportOperator = transportOperator;
         this.transportFrom = transportFrom;
         this.transportTo = transportTo;
@@ -61,11 +66,11 @@ public class Transport {
         this.transportRouteNumber = transportRouteNumber;
     }
 
-    public Date getTransportDepartureDate() {
+    public String getTransportDepartureDate() {
         return transportDepartureDate;
     }
 
-    public void setTransportDepartureDate(Date transportDepartureDate) {
+    public void setTransportDepartureDate(String transportDepartureDate) {
         this.transportDepartureDate = transportDepartureDate;
     }
 

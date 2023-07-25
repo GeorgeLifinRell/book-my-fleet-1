@@ -20,6 +20,7 @@
     <string name="to">To</string>
     <string name="search_tickets">SEARCH TICKETS</string>
     <string name="book_now">BOOK NOW</string>
+    <string name="date_of_journey">Date of Journey</string>
 
     <string-array name="destinations">
         <item>BENGALURU</item>

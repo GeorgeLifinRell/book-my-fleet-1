@@ -54,8 +54,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
-        Handler handler = new Handler();
 
+        EditText dateOfJourney = findViewById(R.id.date_of_journey);
         journeyFrom = findViewById(R.id.from);
         Button getLocation = findViewById(R.id.get_location_home);
         Spinner journeyTo = findViewById(R.id.to_spinner);
@@ -112,8 +112,11 @@ public class HomeActivity extends AppCompatActivity {
                     return;
                 }
                 Intent intent = new Intent(getApplicationContext(), SelectBusActivity.class);
-                intent.putExtra("JOURNEY_FROM", journeyFrom.getText().toString());
-                intent.putExtra("JOURNEY_TO", journeyTo.getSelectedItem().toString());
+                Bundle bundle = new Bundle();
+                bundle.putString("JOURNEY_FROM", journeyFrom.getText().toString().trim());
+                bundle.putString("JOURNEY_TO", journeyTo.getSelectedItem().toString().trim());
+                bundle.putString("DATE_OF_JOURNEY", dateOfJourney.getText().toString().trim());
+                intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
             }
@@ -127,8 +130,14 @@ public class HomeActivity extends AppCompatActivity {
                     return;
                 }
                 Intent intent = new Intent(getApplicationContext(), SelectFlightActivity.class);
-                intent.putExtra("JOURNEY_FROM", journeyFrom.getText().toString());
-                intent.putExtra("JOURNEY_TO", journeyTo.getSelectedItem().toString());
+                Bundle bundle = new Bundle();
+                bundle.putString("JOURNEY_FROM", journeyFrom.getText().toString().trim());
+                bundle.putString("JOURNEY_TO", journeyTo.getSelectedItem().toString().trim());
+                bundle.putString("DATE_OF_JOURNEY", dateOfJourney.getText().toString().trim());
+                intent.putExtras(bundle);
+
+//                intent.putExtra("JOURNEY_FROM", journeyFrom.getText().toString());
+//                intent.putExtra("JOURNEY_TO", journeyTo.getSelectedItem().toString());
                 startActivity(intent);
                 finish();
             }
