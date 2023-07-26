@@ -22,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,7 +37,6 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser currentUser;
     EditText journeyFrom;
-    Transport bus, flight;
 
     @Override
     protected void onStart() {
@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         EditText dateOfJourney = findViewById(R.id.date_of_journey);
         journeyFrom = findViewById(R.id.from);
@@ -91,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getLocation();
+                getLastLocation();
             }
         });
 
@@ -144,7 +145,7 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void getLocation() {
+    private void getLastLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationProviderClient.getLastLocation()
                     .addOnSuccessListener(new OnSuccessListener<Location>() {
@@ -176,7 +177,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLocation();
+                getLastLocation();
             } else {
                 Toast.makeText(this, "Location Access Required", Toast.LENGTH_SHORT).show();
             }

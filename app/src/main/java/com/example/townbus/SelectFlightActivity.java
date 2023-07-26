@@ -1,14 +1,89 @@
 package com.example.townbus;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 public class SelectFlightActivity extends AppCompatActivity {
+    RecyclerView recyclerView;
+    ArrayList<Transport> list;
+    MyAdapter adapter;
+    FirebaseFirestore db;
+    ProgressDialog progressDialog;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_flight);
+        String journeyFrom = "";
+        String journeyTo = "";
+        String dateOfJourney = "";
+//        Intent intent = getIntent();
+//        String journeyFrom = intent.getStringExtra("JOURNEY_FROM");
+//        String journeyTo = intent.getStringExtra("JOURNEY_TO");
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            journeyFrom = bundle.getString("JOURNEY_FROM");
+            journeyTo = bundle.getString("JOURNEY_TO");
+            dateOfJourney = bundle.getString("DATE_OF_JOURNEY");
+        }
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Fetching Data...");
+        progressDialog.show();
+
+        recyclerView = findViewById(R.id.flight_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+
+        list = new ArrayList<>();
+
+        // Set data - pending - RELL
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String finalJourneyFrom = "FROM: " + journeyFrom;
+        String finalJourneyTo = "TO: " + journeyTo;
+        String finalDateOfJourney = "Date of Journey: " + dateOfJourney;
+        db.collection("flightData/")
+                .get()
+                .addOnSuccessListener(task -> {
+                    for (DocumentSnapshot ds : task.getDocuments()) {
+                        Transport bus = new Transport();
+                        bus.setTransportOperator(String.valueOf(ds.get("flightOperator")));
+                        bus.setTransportFrom(finalJourneyFrom.toUpperCase());
+                        bus.setTransportTo(finalJourneyTo);
+                        bus.setTransportDepartureDate(finalDateOfJourney);
+                        list.add(bus);
+                    }
+                    adapter = new MyAdapter(this, list);
+                    recyclerView.setAdapter(adapter);
+                    progressDialog.dismiss();
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SelectFlightActivity.this, "Error! Try again.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

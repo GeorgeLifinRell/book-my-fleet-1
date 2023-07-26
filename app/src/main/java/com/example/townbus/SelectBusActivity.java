@@ -25,6 +25,13 @@ public class SelectBusActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_bus);
@@ -55,16 +62,16 @@ public class SelectBusActivity extends AppCompatActivity {
 
         // Set data - pending - RELL
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String finalJourneyFrom = journeyFrom;
-        String finalJourneyTo = journeyTo;
-        String finalDateOfJourney = dateOfJourney;
+        String finalJourneyFrom = "FROM: " + journeyFrom;
+        String finalJourneyTo = "TO: " + journeyTo;
+        String finalDateOfJourney = "Date of Journey: " + dateOfJourney;
         db.collection("busData/")
                 .get()
                 .addOnSuccessListener(task -> {
                     for (DocumentSnapshot ds : task.getDocuments()) {
                         Transport bus = new Transport();
-                        bus.setTransportOperator(String.valueOf(ds.get("transportOperator")));
-                        bus.setTransportFrom(finalJourneyFrom);
+                        bus.setTransportOperator(String.valueOf(ds.get("busOperator")));
+                        bus.setTransportFrom(finalJourneyFrom.toUpperCase());
                         bus.setTransportTo(finalJourneyTo);
                         bus.setTransportDepartureDate(finalDateOfJourney);
                         list.add(bus);
